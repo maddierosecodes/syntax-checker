@@ -21,10 +21,24 @@ function syntaxChecker(text) {
     }
     if (bracketOrder.length)
       return `line ${lines.indexOf(line) + 1} missing ${
-        bracketsRef[bracketOrder[0]]
+        bracketsRef[bracketOrder[bracketOrder.length-1]]
       }`;
   }
   return '';
 }
+
+
+console.log(
+  syntaxChecker(`[({(<(())[]>[[{[]{<()<>>
+[(()[<>])]({[<{<<[]>>(
+{([(<{}[<>[]}>{[]{[(<()>
+(((({<>}<{<{<>}{[]{[]{}
+[[<[([]))<([[{}[[()]]]
+[{[{({}]{}}([{[{{{}}([]
+{<[[]]>}<{[{[{[]{()[[[]
+[<(<(<(<{}))><([]([]()
+<{([([[(<>()){}]>(<<{{
+<{([{{}}[<[[[<>{}]]]>[]]`)
+);
 
 module.exports = syntaxChecker;
