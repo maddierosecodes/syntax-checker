@@ -67,7 +67,7 @@ describe('syntaxChecker', () => {
   });
 });
 
-describe('fullSyntaxChecker', () => {
+describe.only('fullSyntaxChecker', () => {
   it('should return an array containing a single empty string if passed correct data', () => {
     expect(fullSyntaxChecker(`()`)).toEqual([]);
   });
@@ -78,12 +78,14 @@ describe('fullSyntaxChecker', () => {
 {()()()>
 <([{}`)
     ).toEqual([
-      'line 1 missing )',
+      'line 1 missing (',
       'line 2 expected ) found ]',
-      'line 2 missing )',
+      'line 2 missing (',
       'line 3 expected } found >',
-      'line 3 missing }',
-      'line 4 missing >'
+      'line 3 missing {',
+      'line 4 missing [',
+      'line 4 missing (',
+      'line 4 missing <'
     ]);
   });
 });

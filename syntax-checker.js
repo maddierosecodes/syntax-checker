@@ -51,12 +51,11 @@ function fullSyntaxChecker(text) {
         );
       } else bracketOrder.shift();
     }
-    if (bracketOrder.length)
-      allErrors.push(
-        `line ${lines.indexOf(line) + 1} missing ${
-          bracketsRef[bracketOrder[bracketOrder.length - 1]]
-        }`
-      );
+    if (bracketOrder.length) {
+      bracketOrder.forEach((bracket) => {
+        allErrors.push(`line ${lines.indexOf(line) + 1} missing ${bracket}`);
+      });
+    }
   }
   return allErrors;
 }
