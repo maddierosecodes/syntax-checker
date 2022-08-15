@@ -1,0 +1,23 @@
+{
+  "name": "syntax-checker",
+  "version": "1.0.0",
+  "description": "For Logic-blocks",
+  "main": "syntax-checker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maddierosecodes/syntax-checker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maddierosecodes/syntax-checker/issues"
+  },
+  "homepage": "https://github.com/maddierosecodes/syntax-checker#readme",
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}
