@@ -1,4 +1,4 @@
-const syntaxChecker = require('./syntax-checker');
+const { syntaxChecker, fullSyntaxChecker } = require('./syntax-checker');
 
 describe('syntaxChecker', () => {
   it('should return an empty string if passed a string containing no errors in any line', () => {
@@ -64,5 +64,26 @@ describe('syntaxChecker', () => {
 ({})
 {`)
     ).toBe('line 3 missing }');
+  });
+});
+
+describe('fullSyntaxChecker', () => {
+  it('should return an array containing a single empty string if passed correct data', () => {
+    expect(fullSyntaxChecker(`()`)).toEqual([]);
+  });
+  it('should return a full log of all present incompletions and corruptions', () => {
+    expect(
+      fullSyntaxChecker(`([]
+(]
+{()()()>
+<([{}`)
+    ).toEqual([
+      'line 1 missing )',
+      'line 2 expected ) found ]',
+      'line 2 missing )',
+      'line 3 expected } found >',
+      'line 3 missing }',
+      'line 4 missing >'
+    ]);
   });
 });
